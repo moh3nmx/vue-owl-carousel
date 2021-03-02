@@ -12,225 +12,225 @@
   </div>
 </template>
 <script>
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import 'owl.carousel';
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+import "owl.carousel";
 
-import events from './utils/events';
+import events from "./utils/events";
 
 export default {
-  name: 'VOwlCarousel',
+  name: "VOwlCarousel",
   props: {
     items: {
       type: Number,
-      default: 3,
+      default: 3
     },
     margin: {
       type: Number,
-      default: 0,
+      default: 0
     },
     loop: {
       type: Boolean,
-      default: false,
+      default: false
     },
     center: {
       type: Boolean,
-      default: false,
+      default: false
     },
     mouseDrag: {
       type: Boolean,
-      default: true,
+      default: true
     },
     touchDrag: {
       type: Boolean,
-      default: true,
+      default: true
     },
     pullDrag: {
       type: Boolean,
-      default: true,
+      default: true
     },
     freeDrag: {
       type: Boolean,
-      default: false,
+      default: false
     },
     stagePadding: {
       type: Number,
-      default: 0,
+      default: 0
     },
     merge: {
       type: Boolean,
-      default: false,
+      default: false
     },
     mergeFit: {
       type: Boolean,
-      default: false,
+      default: false
     },
     autoWidth: {
       type: Boolean,
-      default: false,
+      default: false
     },
     startPosition: {
       type: Number,
-      default: 0,
+      default: 0
     },
     uRLhashListener: {
       type: Boolean,
-      default: false,
+      default: false
     },
     nav: {
       type: Boolean,
-      default: true,
+      default: true
     },
     rewind: {
       type: Boolean,
-      default: true,
+      default: true
     },
     navText: {
       type: Array,
-      default: () => ['next', 'prev'],
+      default: () => ["next", "prev"]
     },
     navElement: {
       type: String,
-      default: 'div',
+      default: "div"
     },
     slideBy: {
       type: [Number, String],
-      default: 1,
+      default: 1
     },
     slideTransition: {
       type: String,
-      default: '',
+      default: ""
     },
     dots: {
       type: Boolean,
-      default: true,
+      default: true
     },
     dotsEach: {
       type: [Number, Boolean],
-      default: false,
+      default: false
     },
     dotsData: {
       type: Boolean,
-      default: false,
+      default: false
     },
     lazyLoad: {
       type: Boolean,
-      default: false,
+      default: false
     },
     lazyLoadEager: {
       type: Number,
-      default: 0,
+      default: 0
     },
     autoplay: {
       type: Boolean,
-      default: false,
+      default: false
     },
     autoplaySpeed: {
       type: Boolean,
-      default: false,
+      default: false
     },
     autoplayTimeout: {
       type: Number,
-      default: 5000,
+      default: 5000
     },
     autoplayHoverPause: {
       type: Boolean,
-      default: false,
+      default: false
     },
     smartSpeed: {
       type: Number,
-      default: 250,
+      default: 250
     },
     fluidSpeed: {
       type: [Number, Boolean],
-      default: false,
+      default: false
     },
     navSpeed: {
       type: [Number, Boolean],
-      default: false,
+      default: false
     },
     dragEndSpeed: {
       type: [Number, Boolean],
-      default: false,
+      default: false
     },
     callbacks: {
       type: Boolean,
-      default: true,
+      default: true
     },
     responsive: {
       type: Object,
-      default: () => {},
+      default: () => {}
     },
     responsiveRefreshRate: {
       type: Number,
-      default: 200,
+      default: 200
     },
     responsiveBaseElement: {
-        type: String,
-        "default": "window"
+      type: String,
+      default: "window"
     },
     video: {
       type: Boolean,
-      default: false,
+      default: false
     },
     videoHeight: {
       type: [Number, Boolean],
-      default: false,
+      default: false
     },
     videoWidth: {
       type: [Number, Boolean],
-      default: false,
+      default: false
     },
     animateOut: {
       type: [String, Boolean],
-      default: false,
+      default: false
     },
     animateIn: {
       type: [String, Boolean],
-      default: false,
+      default: false
     },
     fallbackEasing: {
       type: String,
-      default: 'swing',
+      default: "swing"
     },
     info: {
       type: Function,
-      default: () => {},
+      default: () => {}
     },
     itemElement: {
       type: String,
-      default: 'div',
+      default: "div"
     },
     stageElement: {
       type: String,
-      default: 'div',
+      default: "div"
     },
     navContainer: {
       type: [String, Boolean],
-      default: false,
+      default: false
     },
     dotsContainer: {
       type: [String, Boolean],
-      default: false,
+      default: false
     },
     checkVisible: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data: function() {
     return {
       showPrev: false,
       showNext: true,
 
-      prevHandler: 'carousel_prev_' + this.generateUniqueId(),
-      elementHandle: 'carousel_' + this.generateUniqueId(),
-      nextHandler: 'carousel_next_' + this.generateUniqueId(),
+      prevHandler: "carousel_prev_" + this.generateUniqueId(),
+      elementHandle: "carousel_" + this.generateUniqueId(),
+      nextHandler: "carousel_next_" + this.generateUniqueId()
     };
   },
 
   mounted: function() {
-    const owl = $('#' + this.elementHandle).owlCarousel({
+    const owl = $("#" + this.elementHandle).owlCarousel({
       items: this.items,
       margin: this.margin,
       loop: this.loop,
@@ -279,25 +279,25 @@ export default {
       stageElement: this.stageElement,
       navContainer: this.navContainer,
       dotsContainer: this.dotsContainer,
-      checkVisible: this.checkVisible,
+      checkVisible: this.checkVisible
     });
 
-    $('#' + this.prevHandler).click(function() {
-      owl.trigger('prev.owl.carousel');
+    $("#" + this.prevHandler).click(function() {
+      owl.trigger("prev.owl.carousel");
     });
 
-    $('#' + this.nextHandler).click(function() {
-      owl.trigger('next.owl.carousel');
+    $("#" + this.nextHandler).click(function() {
+      owl.trigger("next.owl.carousel");
     });
 
-    events.forEach((eventName) => {
-      owl.on(`${eventName}.owl.carousel`, (event) => {
+    events.forEach(eventName => {
+      owl.on(`${eventName}.owl.carousel`, event => {
         this.$emit(eventName, event);
       });
     });
 
     if (!this.loop) {
-      owl.on('changed.owl.carousel', (event) => {
+      owl.on("changed.owl.carousel", event => {
         // start
         if (event.item.index === 0) {
           this.showPrev = false;
@@ -319,9 +319,20 @@ export default {
 
   methods: {
     generateUniqueId() {
-      return Math.random().toString(36).substring(2, 15);
+      return Math.random()
+        .toString(36)
+        .substring(2, 15);
     },
-  },
+    next() {
+      $("#" + this.nextHandler).click(function() {
+        owl.trigger("next.owl.carousel");
+      });
+    },
+    prev() {
+      $("#" + this.prevHandler).click(function() {
+        owl.trigger("prev.owl.carousel");
+      });
+    }
+  }
 };
-
 </script>
