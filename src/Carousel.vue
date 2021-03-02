@@ -222,10 +222,10 @@ export default {
     return {
       showPrev: false,
       showNext: true,
-
       prevHandler: "carousel_prev_" + this.generateUniqueId(),
       elementHandle: "carousel_" + this.generateUniqueId(),
-      nextHandler: "carousel_next_" + this.generateUniqueId()
+      nextHandler: "carousel_next_" + this.generateUniqueId(),
+      owl: null
     };
   },
 
@@ -281,6 +281,7 @@ export default {
       dotsContainer: this.dotsContainer,
       checkVisible: this.checkVisible
     });
+    this.owl = owl;
 
     $("#" + this.prevHandler).click(function() {
       owl.trigger("prev.owl.carousel");
@@ -325,12 +326,12 @@ export default {
     },
     next() {
       $("#" + this.nextHandler).click(function() {
-        owl.trigger("next.owl.carousel");
+        this.owl.trigger("next.owl.carousel");
       });
     },
     prev() {
       $("#" + this.prevHandler).click(function() {
-        owl.trigger("prev.owl.carousel");
+        this.owl.trigger("prev.owl.carousel");
       });
     }
   }
