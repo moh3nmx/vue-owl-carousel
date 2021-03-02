@@ -325,14 +325,10 @@ export default {
         .substring(2, 15);
     },
     next() {
-      $("#" + this.nextHandler).click(function() {
-        this.owl.trigger("next.owl.carousel");
-      });
+      this.owl.trigger("next.owl.carousel");
     },
     prev() {
-      $("#" + this.prevHandler).click(function() {
-        this.owl.trigger("prev.owl.carousel");
-      });
+      this.owl.trigger("prev.owl.carousel");
     }
   }
 };
